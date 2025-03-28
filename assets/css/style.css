@@ -1,0 +1,484 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    flex-direction: row;
+    transition: width 1s ease-in-out;
+}
+
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;  /* 確保圖片不變形，超出部分裁切 */
+}
+
+.sidebar h2 {
+    font-size: 1.6rem;
+}
+
+.sidebar h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar nav ul li {
+    margin: 10px 0;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    background: #34495e;
+}
+
+.content {
+    flex: 1;
+    background: #f4f4f4; /* 設定主內容區背景色 */
+}
+
+/* 🎯 選單按鈕（僅 768px 以下顯示） */
+.menu-button {
+    display: none;
+    background: #2c3e50;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        border-radius: 0;
+    }
+    .sidebar {
+        width: 100%;
+        text-align: center;
+        padding: 10px 20px;
+    }
+    .sidebar nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+    .sidebar nav ul li {
+        margin: 0;
+    }
+    .content {
+        padding: 0;
+    }
+}
+
+/* 🎯 768px 以下的選單樣式 */
+@media (max-width: 768px) {
+    .menu-button {
+        display: block;
+        background: #2c3e50;
+        color: white;
+        padding: 10px;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-menu {
+        max-height: 0;
+        overflow: hidden;
+        flex-direction: column; /* 確保選單是垂直排列 */
+        width: 100%;
+        background: #2c3e50;
+        padding: 0; /* 移除 padding，避免影響 max-height 計算 */
+        transition: max-height 0.5s ease-in-out, padding 0.3s ease-in-out;
+    }
+
+    .sidebar nav ul {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .nav-menu.show {
+        display: flex; /* 確保展開時是 block 或 flex */
+        flex-direction: column; /* 確保項目垂直排列 */
+    }
+
+    .nav-menu li {
+        text-align: left;
+        width: 100%;
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        background: #34495e;
+    }
+
+    .nav-menu li a:hover {
+        background: #496785;
+    }
+}
+
+
+.content {
+    flex: 1;
+    background: #f4f4f4; /* 設定主內容區背景色 */
+}
+
+
+.experience__table tbody {
+    background: #f4f4f4; /* 設定 tbody 背景顏色 */
+}
+
+/* 主要學歷區塊 */
+.contact-info {
+    background: #496785;
+    padding: 1.5rem;
+    color: white;  /* 設定整個區塊內的文字為白色 */
+}
+
+.contact-info__title {
+    font-size: 1.8rem;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* 🎯 表格樣式 */
+.contact-info__table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1); /* 讓表格有透明度 */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 🎯 表格標題 (左側欄位) */
+.contact-info__table th {
+    font-size: 1.2rem;
+    text-align: left;
+    padding: 12px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 🎯 表格內容 (右側欄位) */
+.contact-info__table td {
+    font-size: 1.2rem;
+    padding: 12px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 🎯 調整最後一行的邊框 */
+.contact-info__table tr:last-child th,
+.contact-info__table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 🎯 響應式調整 (適用於手機版) */
+@media (max-width: 1024px) {
+    .contact-info {
+        padding: 0; /* 設定 contact-info 的 padding 為 0 */
+        padding-top: 1rem;
+        margin-bottom: 0;
+        background: #496785;
+    }
+
+    .contact-info__table th,
+    .contact-info__table td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+        border-bottom: none;
+    }
+
+    .contact-info__table tr {
+        margin-bottom: 15px;
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .contact-info__table th {
+        background: transparent;
+        font-weight: bold;
+    }
+}
+
+
+/* 個人簡歷區塊 */
+.personal-resume {
+    padding: 1.5rem;
+}
+
+.personal-resume__title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.personal-resume__text {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* 🎯 主要學歷區塊 */
+.personal-resume__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 🎯 表格表頭樣式 */
+.personal-resume__table thead th {
+    background: #2c3e50;;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #e76f51;
+}
+
+/* 🎯 表格內容樣式 */
+.personal-resume__table tbody tr:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+.personal-resume__table tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+
+.personal-resume__table td {
+    padding: 12px;
+    text-align: center;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 🎯 表格最後一行邊框調整 */
+.personal-resume__table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 🎯 響應式設計 */
+@media (max-width: 1024px) {
+    .personal-resume {
+        padding: 0; /* 設定 personal-resume 的 padding 為 0 */
+        padding-top: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .personal-resume {
+        padding: 0; /* 設定 personal-resume 的 padding 為 0 */
+        padding-top: 1.5rem;
+    }
+}
+
+
+/* 🎯 專長區塊 */
+.specialization {
+    padding: 1.5rem;
+    background: #eef1f7; /* 柔和的藍灰背景 */
+    color: #333;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 🎯 專長標題 */
+.specialization__title {
+    font-size: 1.8rem;
+    color: #2c3e50; /* 深藍色標題 */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* 🎯 專長內容 */
+.specialization p {
+    text-align: left;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+    padding: 0 10%;
+}
+
+
+/* 🎯 相關經歷表格樣式 */
+.related-experience {
+    padding: 1.5rem;
+}
+
+/* 🎯 相關經歷標題樣式 */
+.related-experience__title {
+    font-size: 1.8rem;
+    color: #ffffff; /* 白色標題，讓對比更明顯 */
+    font-weight: bold;
+    display: inline-block;
+    text-align: center; /* 文字置中 */
+    width: 100%; /* 確保標題區塊與父容器對齊 */
+    background: #2c3e50; /* 深藍色背景，統一風格 */
+    padding: 15px; /* 讓標題有適當的內距 */
+    border-radius: 8px 8px 0 0; /* 上方無圓角，僅下方有圓角 */
+}
+
+/* 🎯 移除相關經歷標題的底線 */
+.related-experience__title a {
+    text-decoration: none !important; /* 強制移除底線 */
+    color: inherit; /* 繼承父元素顏色 */
+    display: block; /* 讓超連結填滿整個標題區塊 */
+    width: 100%;
+}
+
+/* 🎯 滑鼠懸停時變色 */
+.related-experience__title a:hover {
+    color: #ffcc00; /* 懸停時變為亮黃色，增加互動感 */
+}
+
+.related-experience__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 0 0 8px 8px; /* 上方無圓角，僅下方有圓角 */
+}
+
+/* 🎯 表格表頭樣式 */
+.related-experience__table thead th {
+    background: #2c3e50;
+    color: white;
+    padding: 12px; 
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 🎯 表格內容樣式 */
+.related-experience__table tbody tr:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+.related-experience__table tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+
+.related-experience__table td {
+    padding: 12px;
+    text-align: left;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 🎯 特殊列標題（現任/曾任） */
+.related-experience__table td[colspan="4"] {
+    background: #839fb8;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px;
+}
+
+/* 🎯 表格最後一行邊框調整 */
+.related-experience__table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 🎯 響應式設計 */
+@media (max-width: 1024px) {
+    .related-experience {
+        padding: 0;
+        padding-top: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .related-experience {
+        padding: 0;
+        padding-top: 1.5rem;
+    }
+}
+
+/* 🎯 響應式設計 */
+@media (max-width: 1024px) {
+    .related-experience {
+        padding: 0; /* 設定 personal-resume 的 padding 為 0 */
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .related-experience {
+        padding: 0; /* 設定 personal-resume 的 padding 為 0 */
+        margin-bottom: 0;
+    }
+}

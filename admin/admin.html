@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理後台</title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>個人資料管理</h1>
+        <form id="admin-form">
+            <fieldset>
+                <legend>個人資訊</legend>
+                <label for="name">姓名:</label>
+                <input type="text" id="name" name="name">
+
+                <label for="englishName">英文名:</label>
+                <input type="text" id="englishName" name="englishName">
+
+                <label for="title">職稱:</label>
+                <input type="text" id="title" name="title">
+
+                <label for="organization">服務機關:</label>
+                <input type="text" id="organization" name="organization">
+
+                <label for="phone">電話:</label>
+                <input type="text" id="phone" name="phone">
+
+                <label for="email">信箱:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="profile-pic">個人照片:</label>
+                <img id="profile-preview" src="" alt="個人照片預覽" style="display: always; max-width: 150px; margin-top: 10px;">
+                <input type="file" id="profile-pic" name="profile-pic">                
+            </fieldset>
+
+            <fieldset>
+                <legend>主要學歷</legend>
+                <table id="education-table">
+                    <thead>
+                        <tr>
+                            <th>畢業學校</th>
+                            <th>國別</th>
+                            <th>主修學門系所</th>
+                            <th>學位</th>
+                            <th>起迄年月</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- JS 動態添加 -->
+                    </tbody>
+                </table>
+                <button type="button" id="add-education">新增學歷</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>現職及專長相關之經歷</legend>
+                <table id="experience-table">
+                    <thead>
+                        <tr>
+                            <th>類別</th>
+                            <th>服務機關</th>
+                            <th>服務部門/系所</th>
+                            <th>職稱</th>
+                            <th>起迄年月</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- JS 動態添加 -->
+                    </tbody>
+                </table>
+                <button type="button" id="add-experience">新增經歷</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>專長</legend>
+                <textarea id="expertise" name="expertise" rows="3"></textarea>
+            </fieldset>
+
+            <button type="submit">儲存變更</button>
+            <button type="button" id="clear-form">清空所有欄位</button>
+
+        </form>
+    </div>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
